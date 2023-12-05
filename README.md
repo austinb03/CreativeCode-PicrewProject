@@ -1,2 +1,2 @@
 # CreativeCode PicrewProject
- This is a character created made with art and code by me ;)
+ This is a character creator made with art and code by me ;)
