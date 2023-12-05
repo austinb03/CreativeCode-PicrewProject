@@ -1,7 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Lilita+One&display=swap');
+
 html, body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    background-color: #E9EFE9;
+    color: #004D40;
+    font-family: 'Acme', sans-serif;
+    font-size: x-large;
 }
+
 canvas {
-  display: block;
+    display: block;
+    margin: auto;
+    padding: 25px;
+
+}
+
+.title {
+    padding: 5px;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Lilita One', sans-serif;
+    font-size: 32px;
+    color: #00897B;
+}
+
+.text-block {
+    border: 3px solid#00897B;
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%; 
+}
+
+
+p {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.canvas-container {
+    text-align: center;
+}
+
+
+#button-holder {
+    text-align: center;
+}
+
+.button-style {
+    padding: 10px 20px;
+    margin: 10px;
+    border: 1px solid #5C6BC0;
+    background-color: #F8BBD0;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button-style:hover {
+    background-color: #F48FB1;
+}
+
+
+#arrow-button-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Allow flex items to wrap to the next line */
+  gap: 10px; /* Add space between button pairs */
+  margin-top: 10px; /* Add margin to separate from the canvas */
+}
+
+.label {
+  text-align: center;
+}
+
+.next-button,
+.prev-button {
+  padding: 3px 5px;
+  border: 1px solid #5C6BC0;
+  background-color: #F8BBD0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 0 5px;
+}
+
+.next-button:hover,
+.prev-button:hover {
+  background-color: #F48FB1;
+}
+
+.button-pair {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Adjust the margin based on your preference */
+}
+
+.label {
+  font-size: 16px;
+  color: #004D40;
+  margin-right: 5px; /* Add margin between label and buttons */
 }
