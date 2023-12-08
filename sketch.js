@@ -1,3 +1,5 @@
+
+// classes for the assets, Parts being the most generic
 class Parts {
   constructor(images) {
     this.images = images;
@@ -17,6 +19,7 @@ class Parts {
   }
 }
 
+// Eyes and Hair classes and subclasses need the functionality to change colors
 class Eyes {
   constructor(images, colors) {
     this.images = images;
@@ -135,33 +138,33 @@ let bangsIndex = 0;
 let colorIndex = 0;
 
 let specificColors = [
-  [255, 255, 255],  // white
-  [255, 245, 229],  // bleach
-  [231, 209, 172],  // blond
-  [191, 167, 126],  // dirty blond
-  [119,101,54],  // hazel 1
-  [174,115,78],  // hazel 2
-  [145, 86, 67], // light brown
-  [102, 50, 34], // red brown
-  [63, 27, 15], // auburn
-  [66, 41, 28], // brown
-  [24, 9, 4], // dark brown
-  [0, 0, 0], // black
-   [57, 10, 17], // wine red
-  [114, 17, 30], // red
-  [214, 42, 67], // pink red/hot pink
-  [255, 155, 74], // orange
-  [255, 198, 92],  // yellow
-  [15, 61, 28],  // dark green
-  [66, 214, 108],  // electric lime
-  [198, 242, 231],  // seafoam
-  [76, 139, 255],  // light blue
-  [53, 55, 187],  // blue
-   [139, 95, 233], // lilac
-  [63, 33, 127], // lavender
-  [29, 12, 67], // purple 
-   [255, 88, 154], // pink
-  [255, 122, 218]  // bubblegum
+  [255, 255, 255],  // White
+  [255, 245, 229],  // Bleach
+  [231, 209, 172],  // Blond
+  [191, 167, 126],  // Dirty blond
+  [119,101,54],  // Hazel 1
+  [174,115,78],  // Hazel 2
+  [145, 86, 67], // Light brown
+  [102, 50, 34], // Red brown
+  [63, 27, 15], // Auburn
+  [66, 41, 28], // Brown
+  [24, 9, 4], // Dark brown
+  [0, 0, 0], // Black
+   [57, 10, 17], // Wine red
+  [114, 17, 30], // Red
+  [214, 42, 67], // Pink red/hot pink
+  [255, 155, 74], // Orange
+  [255, 198, 92],  // Yellow
+  [15, 61, 28],  // Dark green
+  [66, 214, 108],  // Electric lime
+  [198, 242, 231],  // Seafoam
+  [76, 139, 255],  // Light blue
+  [53, 55, 187],  // Blue
+   [139, 95, 233], // Lilac
+  [63, 33, 127], // Lavender
+  [29, 12, 67], // Purple 
+   [255, 88, 154], // Pink
+  [255, 122, 218]  // Bubblegum
 ];
 
 let pastelColors = [
@@ -170,6 +173,8 @@ let pastelColors = [
   [204, 255, 204], // Light Green
   [204, 229, 255], // Light Blue
   [255, 204, 255], // Light Purple
+  [213, 255, 237], // Light Seafoam
+  [255, 250, 214]// Light Yellow
 ];
 
 function preload() {
@@ -187,10 +192,12 @@ function preload() {
   skinImages = loadImages("Skin", 20, "Picrew_SkinDetails");
   beardImages = loadImages("Beards", 18, "Picrew_FacialHair");
 
-   overlayColors = Array(backHairImages.length).fill().map(() => specificColors[0]);
+  overlayColors = Array(backHairImages.length).fill().map(() => specificColors[0]);
   eyeColors = Array(eyeShapeImages.length).fill().map(() => specificColors[0]);
   eyeWhiteColors = Array(eyeWhiteImages.length).fill().map(() => specificColors[0]); // Add this line
 
+
+  // Initializing assets
   backHair = new Hair(backHairImages, overlayColors);
   frontHair = new FrontHair(frontHairImages, overlayColors);
   body = new Parts(bodyImages);
@@ -219,18 +226,19 @@ function setup() {
   createButtonForFeature('Change Frame Color', () => randomFramePastelColor());
 
   
-    let bodyButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => body.prev(), 'Arrows/RightArrow.png', () => body.next(), 'Skin Color');
-    let skinButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => skin.prev(), 'Arrows/RightArrow.png', () => skin.next(), 'Skin Details');
-    let backButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => back.prev(), 'Arrows/RightArrow.png', () => back.next(), 'Back');
-    let clothesButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => clothes.prev(), 'Arrows/RightArrow.png', () => clothes.next(), 'Clothes');
-    let mouthButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => mouth.prev(), 'Arrows/RightArrow.png', () => mouth.next(), 'Mouth');
-    let eyebrowButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => eyebrow.prev(), 'Arrows/RightArrow.png', () => eyebrow.next(), 'Eyebrows');
-    let backHairButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => backHair.prev(), 'Arrows/RightArrow.png', () => backHair.next(), 'Hair');
-    let beardsButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => beards.prev(), 'Arrows/RightArrow.png', () => beards.next(), 'Facial Hair');
-    let frontHairButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => frontHair.prev(), 'Arrows/RightArrow.png', () => frontHair.next(), 'Bangs');
-    let hatsButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => hats.prev(), 'Arrows/RightArrow.png', () => hats.next(), 'Hats');
-    let accessButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => access.prev(), 'Arrows/RightArrow.png', () => access.next(), 'Accessories');
+  let bodyButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => body.prev(), 'Arrows/RightArrow.png', () => body.next(), 'Skin Color');
+  let skinButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => skin.prev(), 'Arrows/RightArrow.png', () => skin.next(), 'Skin Details');
+  let backButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => back.prev(), 'Arrows/RightArrow.png', () => back.next(), 'Back');
+  let clothesButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => clothes.prev(), 'Arrows/RightArrow.png', () => clothes.next(), 'Clothes');
+  let mouthButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => mouth.prev(), 'Arrows/RightArrow.png', () => mouth.next(), 'Mouth');
+  let eyebrowButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => eyebrow.prev(), 'Arrows/RightArrow.png', () => eyebrow.next(), 'Eyebrows');
+  let backHairButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => backHair.prev(), 'Arrows/RightArrow.png', () => backHair.next(), 'Hair');
+  let beardsButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => beards.prev(), 'Arrows/RightArrow.png', () => beards.next(), 'Facial Hair');
+  let frontHairButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => frontHair.prev(), 'Arrows/RightArrow.png', () => frontHair.next(), 'Bangs');
+  let hatsButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => hats.prev(), 'Arrows/RightArrow.png', () => hats.next(), 'Hats');
+  let accessButtons = new ArrowButtonPair('Arrows/LeftArrow.png', () => access.prev(), 'Arrows/RightArrow.png', () => access.next(), 'Accessories');
 
+  // Specifically tie the eyeShape and eyeWhite assets together to rotate in tandem
   let eyeButtons = new ArrowButtonPair(
   'Arrows/LeftArrow.png',
   () => {
@@ -244,7 +252,7 @@ function setup() {
   },
   'Eyes'
 );
-  
+  // Buttons that deal with color changing aspects
     let hairColorButtons = new ColorArrowButtonPair(
   'Arrows/LeftArrow.png',
   () => {
@@ -293,8 +301,8 @@ let eyeWhiteColorButtons = new ColorArrowButtonPair(
   
 }
 
+// Default
 rectColor = (220);
-
 
 function randomPastelColor() {
   rectColor = random(pastelColors);
@@ -304,12 +312,12 @@ function randomPastelColor() {
 function draw() {
   background(255);
   
-  // Draw the specific rectangle first
+  // Draw the background to change character background color
   fill(rectColor);
   strokeWeight(5);
   rect(0, 0, width, height);
 
-  // Draw other elements here
+  
   back.display();
   backHair.display();
   body.display();
@@ -328,7 +336,7 @@ function draw() {
     frame(frameColor);
   }
 }
-
+// Simplify code for image assets
 function loadImages(folder, count, template) {
   let images = [];
   for (let i = 1; i <= count; i++) {
@@ -336,6 +344,8 @@ function loadImages(folder, count, template) {
   }
   return images;
 }
+
+// Frame code 
 
 function randomFramePastelColor() {
   const r = random(150, 225);
@@ -351,6 +361,7 @@ function frame(color) {
   rect(0, 0, width, height);
 }
 
+// Button code
 function createButtonForFeature(label, action) {
   let button = createButton(label);
   button.parent('button-holder');
@@ -358,16 +369,16 @@ function createButtonForFeature(label, action) {
   button.mousePressed(action);
 }
 
-
+// Created classes for complicated arrow buttons
 class ArrowButtonPair {
   constructor(prevImage, prevAction, nextImage, nextAction, buttonLabel) {
     this.buttonContainer = createDiv(); // Create a container for the button and arrow text
-    this.buttonContainer.class('arrow-button-container'); // Add a specific class for styling if needed
+    this.buttonContainer.class('arrow-button-container'); // A specific class for styling 
     this.buttonContainer.parent('arrow-button-holder');
 
     // Create the label
     let labelElement = createP(buttonLabel);
-    labelElement.class('label'); // Apply specific class for label styling if needed
+    labelElement.class('label'); // Apply specific class for label styling 
     labelElement.parent(this.buttonContainer);
 
     // Create the "Prev" button
@@ -391,12 +402,12 @@ class ArrowButtonPair {
 class ColorArrowButtonPair {
   constructor(prevImage, prevAction, nextImage, nextAction, buttonLabel) {
     this.buttonContainer = createDiv(); // Create a container for the button and arrow text
-    this.buttonContainer.class('arrow-button-container'); // Add a specific class for styling if needed
+    this.buttonContainer.class('arrow-button-container'); // A specific class for styling i
     this.buttonContainer.parent('arrow-button-holder');
 
     // Create the label
     let labelElement = createP(buttonLabel);
-    labelElement.class('label'); // Apply specific class for label styling if needed
+    labelElement.class('label'); // Apply specific class for label styling 
     labelElement.parent(this.buttonContainer);
 
     // Create the "Prev" button
